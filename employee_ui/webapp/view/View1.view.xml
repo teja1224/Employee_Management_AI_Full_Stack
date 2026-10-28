@@ -1,0 +1,83 @@
+<mvc:View controllerName="employeebot.employeeui.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+    <Page id="page">
+        <content>
+           <l:Splitter height="100%">
+                <l:contentAreas>
+                    <!-- LEFT SIDE: Employee Directory Table -->
+                    <Page title="Employee Directory" id="empDirectoryPage">
+                        <content>
+                            <Table id="employeeTable"
+                                   items="{path: '/Employees', parameters: {$expand: 'department'}}"
+                                   growing="true"
+                                   growingThreshold="10">
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <Title text="Team Members" level="H2"/>
+                                        <ToolbarSpacer/>
+                                        <Button icon="sap-icon://add" press=".onOpenAddDialog" tooltip="Add new Employee" text="Add Employee" type="Emphasized"></Button>
+                                        <Button icon="sap-icon://refresh" press=".onRefreshData" tooltip="Refresh Data"/>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column><Text text="Name"/></Column>
+                                    <Column><Text text="Role"/></Column>
+                                    <Column><Text text="Department"/></Column>
+                                    <Column><Text text="Email"/></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <ObjectIdentifier title="{name}"/>
+                                            <Text text="{role}"/>
+                                            <ObjectStatus text="{department/name}" state="Information"/>
+                                            <Link text="{email}" href="mailto:{email}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </content>
+                    </Page>
+
+                    <!-- RIGHT SIDE: AI Assistant Chatbot -->
+                    <Page title="AI Copilot" id="chatChatPage">
+    <content>
+        <VBox height="100%" justifyContent="SpaceBetween">
+            <!-- Top: Scrollable Chat History Container -->
+            <ScrollContainer id="chatScrollContainer" height="100%" vertical="true" horizontal="false" class="sapUiResponsivePadding">
+                <List id="chatList" 
+                      items="{chatModel>/messages}" 
+                      class="sapUiSmallMargin"
+                      noDataText="Ask a question below to chat with Groq LLM connected to SAP HANA Cloud.">
+                    <CustomListItem>
+                        <VBox class="sapUiSmallMargin">
+                            <HBox alignmentItems="Center">
+                                <core:Icon src="{= ${chatModel>sender} === 'You' ? 'sap-icon://person-placeholder' : 'sap-icon://ai' }" 
+                                           class="sapUiTinyMarginEnd"/>
+                                <Text text="{chatModel>sender}" class="boldText"/>
+                                <Text text=" • {chatModel>time}" class="sapUiTinyMarginStart textMuted"/>
+                            </HBox>
+                            <FormattedText htmlText="{chatModel>formattedText}" class="sapUiTinyMarginTop"/>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </ScrollContainer>
+
+            <!-- Bottom: Fixed Chat Input Bar with Padding -->
+            <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom" width="100%">
+                <FeedInput id="chatFeedInput" post=".onSendChatPrompt" 
+                           placeholder="Ask about employees, departments, or project budgets..." 
+                           width="100%"/>
+            </VBox>
+        </VBox>
+    </content>
+</Page>
+                </l:contentAreas>
+            </l:Splitter>
+        </content>
+    </Page>
+</mvc:View>

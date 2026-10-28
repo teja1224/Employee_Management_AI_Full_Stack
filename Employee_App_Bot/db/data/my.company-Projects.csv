@@ -1,0 +1,11 @@
+ID;title;description;budget
+p1000000-0000-0000-0000-000000000001;Cloud Infrastructure Migration;Migrate legacy on-premise servers to SAP BTP Kyma;250000.00
+p1000000-0000-0000-0000-000000000002;Fiori AI Copilot Integration;Embed Groq and Gemini AI assistant into UI5 apps;120000.00
+p1000000-0000-0000-0000-000000000003;HANA Vector Search Optimization;Enable semantic vector search in SAP HANA Cloud;95000.00
+p1000000-0000-0000-0000-000000000004;HR Automated Onboarding;Streamline new hire workflow via SuccessFactors integration;65000.00
+p1000000-0000-0000-0000-000000000005;Global Payroll Modernization;Standardize company-wide compensation management;180000.00
+p1000000-0000-0000-0000-000000000006;Enterprise Budget Forecasting;Implement real-time financial tracking dashboard;140000.00
+p1000000-0000-0000-0000-000000000007;Customer Brand Refresh;Overhaul marketing collateral and corporate web portal;75000.00
+p1000000-0000-0000-0000-000000000008;Q4 Lead Generation Campaign;Target enterprise accounts via multi-channel marketing;50000.00
+p1000000-0000-0000-0000-000000000009;Design System Standardization;Create reusable UI5 Fiori library components;85000.00
+p1000000-0000-0000-0000-000000000010;Cybersecurity Threat Monitoring;Implement zero-trust policy across enterprise services;210000.00

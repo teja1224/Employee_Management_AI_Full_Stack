@@ -1,0 +1,43 @@
+###
+
+POST  http://localhost:4004/odata/v4/employee/askEmployeeBot
+Content-Type: application/json
+
+{
+    "prompt": "Show me all employees working in engineering department show only their name and email and the total employee count."
+}
+
+### Variables
+@baseUrl = http://localhost:4004
+@servicePath = /odata/v4/employee
+
+### 1. Test OData GET for Employees (Verify HANA Cloud Connection)
+GET {{baseUrl}}{{servicePath}}/Employees
+Accept: application/json
+
+###
+
+### 2. Test OData GET for Projects
+GET {{baseUrl}}{{servicePath}}/Projects
+Accept: application/json
+
+### Test 2: Call Dedicated Groq LLM Service Action
+POST {{baseUrl}}{{servicePath}}/askGroqBot
+Content-Type: application/json
+
+{
+    "prompt": "Show me all employees working in engineering department show only their name and email and the total employee count."
+}
+
+
+
+###
+@baseu = http://localhost:4004
+@servicep = /odata/v4/employee
+
+POST {{baseu}}{{servicep}}/askGroqBot
+Content-Type: application/json
+
+{
+    "prompt": "List all 4 departments and tell me who the lead engineer in Engineering is."
+}

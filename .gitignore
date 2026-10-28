@@ -1,0 +1,20 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor Files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# Dependencies (Globally just in case)
+**/node_modules/
+**/dist/
+**/resources/
+**/flp/
+
+# Environment and Logs
+.env
+*.log
+npm-debug.log*
